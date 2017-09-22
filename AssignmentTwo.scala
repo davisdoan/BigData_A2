@@ -11,11 +11,11 @@ object AssignmentTwo {
     //println(sum_multiples_3_5(20))
     //println(patternCount("aaaaa", "aa"))
     //println(factorial(3))
-    val names = Array("Tom", "Fred", " Harry")
-    val mapNames = ("Tom" -> 3,"Dick" -> 4, "Harry" -> 5)
-    //mapValues(names, mapNames)
+    val names = Array("Tom", "Fred", "Harry")
+    val mapNames = Map("Tom" -> 3,"Dick" -> 4, "Harry" -> 5)
+    mapValues(names, mapNames)
     //println(sampleNoRepeats((1 to 8), 3))
-    smallestRandomSample()
+    //smallestRandomSample()
   }
 
   //q1
@@ -40,24 +40,11 @@ object AssignmentTwo {
   }
 
   //q4 map
-  def mapValues(names: Array[String], nameMap: Map[String, Int]): Int = {
-    // array given is Array("Tom", "Fred", "Harry")
-    // Map is Map(Tom->3, Dick->4, Harry->5)
-    //check if map contains array[i], if it does, append that map[key] to the return array
+  def mapValues(names: Array[String], nameMap: Map[String, Int]): ArrayBuffer[Int] = {
     var nameValues = ArrayBuffer[Int]()
-    var count =0
-    nameMap.keys.foreach((name) =>
-      if(nameMap.contains(name)) {
-        nameValues += 1
-      }
-    )
-
+    names.foreach(name => if(nameMap.contains(name)) {nameValues += nameMap(name)} )
     nameValues.foreach(println)
-    // Returns Array(3,5)
-
-    return 1
-
-    //return names.foreach(i => if(nameMap(i)) {})
+    return nameValues
   }
 
   //q5 randomNumbers
