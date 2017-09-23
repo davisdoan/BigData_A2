@@ -62,6 +62,7 @@ object AssignmentTwo {
       }
     }
     **/
+    // test
     // just use shuffle,
     return Random.shuffle(arrayRange.toList).take(n)
   }
