@@ -13,8 +13,8 @@ object AssignmentTwo {
     //println(factorial(3))
     val names = Array("Tom", "Fred", "Harry")
     val mapNames = Map("Tom" -> 3,"Dick" -> 4, "Harry" -> 5)
-    mapValues(names, mapNames)
-    //println(sampleNoRepeats((1 to 8), 3))
+    //mapValues(names, mapNames)
+    println(sampleNoRepeats((1 to 8), 3))
     //smallestRandomSample()
   }
 
@@ -48,9 +48,10 @@ object AssignmentTwo {
   }
 
   //q5 randomNumbers
-  def sampleNoRepeats(range: Range, n: Int): ArrayBuffer[Int] = {
-    var sampleArray = ArrayBuffer[Int]()
+  def sampleNoRepeats(range: Range, n: Int): List[Int] = {
+    //var sampleArray = ArrayBuffer[Int]()
     var arrayRange = range.toArray
+    /**
     var randomNum = 0
     var i = 0
     while(i < n) {
@@ -60,7 +61,9 @@ object AssignmentTwo {
         i += 1
       }
     }
-    return sampleArray
+    **/
+    // just use shuffle,
+    return Random.shuffle(arrayRange.toList).take(n)
   }
 
   //from A1
@@ -77,6 +80,9 @@ object AssignmentTwo {
     val M:BigInt = sampleArray.sum / sampleArray.length // expected
     // take random sample of 100 diff elements(no replacement) and compute Mean
     val sampleMean:BigInt = Random.shuffle(sampleArray.toList).take(100).sum / 100
+
+    // standardError = standard deviation = average of sample/ sqrt(samplesize)
+    //val standardError =
     // whats the error?
     val formatter = java.text.NumberFormat.getInstance
     println("Median for array mean M: " +  formatter.format(M))
